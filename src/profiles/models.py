@@ -9,4 +9,6 @@ class Profile(models.Model):
     ## python manage.py migrate
 
 def __unicode__(self):
-        return self.name # Why the double indentation????!!
+        #return self.name # Why the double indentation????!!
+    # He fixed this is in his next tutorial just keeping it here as a reminder.
+    return self.name 
