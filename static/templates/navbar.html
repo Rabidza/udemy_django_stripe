@@ -12,8 +12,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>
+            {% url 'home' as home %}
+            {% url 'about' as about %}
+            <li {% if request.path == home %} class="active" {% endif %}><a href="{% url 'home' %}">Home</a></li>
+            <li {% if request.path == about %} class="active" {% endif %}><a href="{% url 'about' %}">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
