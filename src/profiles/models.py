@@ -8,7 +8,6 @@ class Profile(models.Model):
     ## python manage.py makemigrations
     ## python manage.py migrate
 
-def __unicode__(self):
-        #return self.name # Why the double indentation????!!
-    # He fixed this is in his next tutorial just keeping it here as a reminder.
-    return self.name 
+    def __unicode__(self):
+        # unicode is part of the class -- indented the method
+        return self.name 
