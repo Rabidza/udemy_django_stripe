@@ -87,6 +87,7 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(BASE_DIR), "static", "templates"), )
 
 if DEBUG:
+    # NOTE: python manage.py collectstatic did not work because I left out the trailing '/' for '/media/'
     MEDIA_URL = '/media/'
     STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static-only")
     MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
