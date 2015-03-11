@@ -63,4 +63,4 @@ target/
 *.sublime-workspace
 
 # Ignore settings.py 
-settings.py
+django_stripe/settings.py
