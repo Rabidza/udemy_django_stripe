@@ -8,6 +8,7 @@ def contact(request):
     title = 'Contact'
     form = contactForm(request.POST or None)
     context = { 'title': title, 'form':form} # form is needed to keep the form on the html page
+    confirm_message = None
 
     if form.is_valid():
         #print request.POST
@@ -21,7 +22,10 @@ def contact(request):
         send_mail(subject, message, emailFrom, emailTo, fail_silently=True)
         title = "Thanks"
         confirm_message = 'Thanks for the message!'
-        context = {'title':title, 'confirm_message':confirm_message}
-    #context = locals() # use dictionary up top instead
+        form = None
+        
+
+    #context = locals()
+    context = {'title':title, 'form': form, 'confirm_message':confirm_message}
     template = 'contact.html'
     return render(request, template, context)
