@@ -61,3 +61,6 @@ target/
 # Adding .sublime_project to gitignore
 *.sublime-project
 *.sublime-workspace
+
+# Ignore settings.py 
+settings.py
