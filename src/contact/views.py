@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from djanglo.conf import settings
+from django.conf import settings
 from .forms import contactForm
 from django.core.mail import send_mail
 
