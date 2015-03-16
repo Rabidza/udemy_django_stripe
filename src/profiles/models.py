@@ -21,7 +21,7 @@ class profile(models.Model):
         # unicode is part of the class -- indented the method
         return self.name
 
-class userStripe(model.Model):
+class userStripe(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     stripe_id = models.CharField(max_length=200, null=True, blank=True)
 
@@ -30,3 +30,15 @@ class userStripe(model.Model):
             return str(self.stripe_id)
         else:
             return self.user.username
+
+def my_callback(sender, request, user, **kwargs):
+    idStripe, created = userStripe.objects.get_or_create(user=user)
+    if created:
+        print 'created for %s' %(user.username)
+
+    userProfile, isCreated = profile.objects.get_or_create(user=user)
+    if isCreated:
+        userProfile.name = user.username
+        userProfile.save()
+
+user_logged_in.connect(my_callback)
