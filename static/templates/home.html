@@ -38,8 +38,8 @@
                 </label></div></div>
 
   
-  <a class="btn btn-link button secondaryAction" href="/accounts/password/reset/">Forgot Password?</a>
-  <a class="btn btn-link button secondaryAction" href="{% url 'account_login' %}">Signup</a>
+  <a class="btn btn-link button secondaryAction" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+  <a class="btn btn-link button secondaryAction" href="{% url 'account_signup' %}">Signup</a>
   <button class="primaryAction btn btn-default" type="submit">Sign In</button>
 </form>
             {% endif %}
