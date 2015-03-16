@@ -61,6 +61,14 @@
 
     {% endblock %}
 
+    <!-- jquery from checkout.html is loaded here for stripe -->
+    <script>
+        $(document).ready(function(){
+            {% block jquery %}
+            {% endblock %}
+        });
+    </script>
+
 
   </body>
 </html>
