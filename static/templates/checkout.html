@@ -3,7 +3,7 @@
 {% block script %}
 <script type="text/javascript">
   // This identifies your website in the createToken call below
-  Stripe.setPublishableKey('pk_test_faBmOu2EDsXpZrhyaSAyG05o');
+  Stripe.setPublishableKey('{{ publishKey }}');
   // Sending the form to your server
   function stripeResponseHandler(status, response) {
   var $form = $('#payment-form');
