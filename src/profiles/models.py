@@ -23,6 +23,7 @@ class profile(models.Model):
     def __unicode__(self):
         # unicode is part of the class -- indented the method
         return self.name
+        
 
 class userStripe(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
@@ -34,6 +35,7 @@ class userStripe(models.Model):
         else:
             return self.user.username
 
+
 def stripeCallback(sender, request, user, **kwargs):
     user_stripe_account, created = userStripe.objects.get_or_create(user=user)
     if created:
@@ -44,11 +46,14 @@ def stripeCallback(sender, request, user, **kwargs):
         user_stripe_account.stripe_id = new_stripe_id['id']
         user_stripe_account.save()
 
+
 def profileCallback(sender, request, user, **kwargs):
     userProfile, isCreated = profile.objects.get_or_create(user=user)
     if isCreated:
         userProfile.name = user.username
         userProfile.save()
 
-user_logged_in.connect(stripeCallback)
+
 user_signed_up.connect(profileCallback)
+user_signed_up.connect(stripeCallback)
+user_logged_in.connect(stripeCallback)
